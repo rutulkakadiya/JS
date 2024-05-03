@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <h1>Enter bill amount</h1>
+    <input type="text" id="in1">
+
+    <h1 id="bill"></h1>
+
+</body>
+
+</html>
+
+<script>
+
+    let value = document.getElementById("in1").value
+    let gst = 0.18
+
+    let ans = +value + (+value * (0.18))
+
+    document.getElementById("bill").innerHTML = ans
+
+</script>
