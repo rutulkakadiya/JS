@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <label>Enter travelling meters</label>
+    <input type="text" id="in1">
+
+    <br><br>
+    <label>Enter taken time in second</label>
+    <input type="text" id="in2">
+
+    <h1 id="ans">Ans</h1>
+
+</body>
+</html>
+
+<script>
+    let travel = document.getElementById("in1").value
+    let time = document.getElementById("in2").value
+
+    let Speed = +travel/ +time
+
+    document.getElementById("ans").innerHTML = Speed
+</script>
