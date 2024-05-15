@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+</style>
+<body>
+
+    <p>Java Chip Frappuccino</p>
+    <p>Caffe Americano</p>
+    <p>Cold coffee</p>
+    
+    <h1>Enter item from given</h1>
+    <input type="text" id="in1">
+
+
+    <h1 id="ans"></h1>
+
+</body>
+</html>
+
+<script>
+
+    let item = document.getElementById("in1").value
+
+    if(item === ""){
+        document.getElementById("ans").innerHTML = ""
+    }else{
+        switch(item){
+            case "Java Chip Frappuccino":document.getElementById("ans").innerHTML = "₹ 120.00"
+            break
+
+            case "Caffe Americano":document.getElementById("ans").innerHTML = "₹ 100.00"
+            break
+
+            case "Cold coffee":document.getElementById("ans").innerHTML = "₹ 150.00"
+            break
+
+            default:document.getElementById("ans").innerHTML = "Invalid Input"
+        }
+    }
+
+</script>
