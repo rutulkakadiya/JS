@@ -14,22 +14,16 @@
 
 <script>
 
-    // Step 1: Create a blank array
 let array = [];
 
-// Step 2: Use a for loop to populate the array with 'a' to 'f'
-for (let i = 0; i < 6; i++) {
-    // Convert ASCII code to character. 'a' is 97 in ASCII.
+for (let i = 0; i <= 5; i++) {
     array.push(String.fromCharCode(97 + i));
 }
 
-// Step 3: Print the array using console.log
 console.log("Array after adding 'a' to 'f':", array);
 
-// Step 4: Use the pop function to remove 'f'
 array.pop();
 
-// Step 5: Print the modified array using console.log
 console.log("Array after removing 'f':", array);
 
 </script>
