@@ -1,0 +1,98 @@
+<!-- Mini Calculator
+Create a mini calculator application, which has following functionalities
+Addition
+Subtraction
+Division
+Multiplication
+Your app should have
+Two input boxes which should take two numbers from the user.
+Four Buttons with following text content
+Add
+Subtract
+Divide
+Multiply
+When user enter 2 and 4 and clicks on multiply button, an alert should come with 8 as ansWhen user enter 8 and 4 and
+clicks on Divide button,an alert should come with 2 as ans -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    #btn1 {
+        height: 25px;
+        width: 100px;
+    }
+</style>
+
+<body>
+
+    <h1>Enter first number</h1>
+    <input type="text" id="in1">
+    <br><br>
+    <h1>Enter second number</h1>
+    <input type="text" id="in2">
+<br><br><br>
+    <h1 id="ans">Answer </h1>
+    <br>
+    <button onclick="add()" id="btn1">Addition</button>
+    <button onclick="sub()" id="btn1">Addition</button>
+    <button onclick="mul()" id="btn1">Addition</button>
+    <button onclick="div()" id="btn1">Addition</button>
+
+</body>
+
+</html>
+
+<script>
+
+    function add() {
+
+        let first = document.getElementById("in1").value
+        let second = document.getElementById("in2").value
+
+        document.getElementById("ans").innerHTML = +first + +second
+    }
+
+    function sub() {
+
+        let first = document.getElementById("in1").value
+        let second = document.getElementById("in2").value
+
+        document.getElementById("ans").innerHTML = +first - +second
+    }
+
+    function mul() {
+
+        let first = document.getElementById("in1").value
+        let second = document.getElementById("in2").value
+
+        document.getElementById("ans").innerHTML = +first * +second
+    }
+
+    function div() {
+
+        let first = document.getElementById("in1").value
+        let second = document.getElementById("in2").value
+
+        document.getElementById("ans").innerHTML = +first / +second
+    }
+
+</script>
+
+<script>
+
+
+
+</script>
