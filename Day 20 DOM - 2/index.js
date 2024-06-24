@@ -25,9 +25,7 @@ function Todofun(event){
     }
     
     let td3 = document.createElement("td")
-    td3.innerHTML = `
-        <button onclick="click()">DELETE</button>
-    `
+    td3.innerHTML = "DELETE"
 
     tr.append(td1 , td2 , td3)
 
@@ -35,8 +33,3 @@ function Todofun(event){
     document.querySelector("tbody").append(tr)
 }
     
-function click(){
-    tr = " "
-}
-
-click()
