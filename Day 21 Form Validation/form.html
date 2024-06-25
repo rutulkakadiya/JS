@@ -38,7 +38,7 @@
         <br><br><br>
         <input type="submit" style="height: 35px; width: 100px; background-color: green;">
         <br><br><br><br><br>
-        <span id="err" style="color: red;"></span>
+        <span id="err"></span>
     </form>
    </center>
 </body>
@@ -64,6 +64,7 @@
             }
         }
         catch (err) {
+        document.getElementById("err").style.color = "red"
             document.getElementById("err").innerHTML = err.message
         }
     }
