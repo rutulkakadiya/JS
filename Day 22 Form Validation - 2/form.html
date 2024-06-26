@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: white;
+    }
+    input{
+        height: 35px;
+        background-color: transparent;
+        border: 1px solid white;
+        border-radius: 30px;
+    }
+</style>
+<body style="background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20190222/ourmid/pngtree-dark-green-technology-photoelectric-star-background-green-background-image_61341.jpg); background-size: cover; background-position: center;">
+   <center>
+    <form action="" id="signup">
+        <label for="">Name</label> <br>
+        <input type="text" id="name">
+        <br><br><br>
+        <label for="">Phone Number</label> <br>
+        <input type="text" id="phn">
+        <br><br><br>
+        <label for="">Email</label> <br>
+        <input type="text" id="email">
+        <br><br><br>
+        <label for="">Password</label> <br>
+        <input type="text" id="pw">
+        <br><br><br>
+        <label for="">Confirm Password</label> <br>
+        <input type="text" id="cpw">
+        <br><br><br>
+        <input type="submit" style="height: 35px; width: 100px; background-color: green;">
+        <br><br><br><br><br>
+        <span id="err"></span>
+    </form>
+   </center>
+</body>
+
+</html>
+<script>
+    document.getElementById("signup").onsubmit = function (event) {
+         document.getElementById("err").innerHTML = ""
+
+        event.preventDefault()
+        try {
+            let name = document.getElementById("name").value
+            let phone = document.getElementById("phn").value
+            let password = document.getElementById("pw").value
+            let password1 = document.getElementById("cpw").value
+            let email = document.getElementById("email").value
+
+            if (name === "" ||! /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/.test(name)) {
+                throw new Error("please enter name")
+            }
+            if(phone === "" ||! /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(phone)){
+                throw new Error("Enter only number")
+            }
+            if(email === "" ||! /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)){
+                throw new Error("Enter valid email")
+            }
+            if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password)) {
+                throw new Error("Minimum 8 characters required")
+            }
+            if (password !== password1) {
+                throw new Error("Please check password.")
+            }
+        }
+        catch (err) {
+        document.getElementById("err").style.color = "red"
+            document.getElementById("err").innerHTML = err.message
+        }
+    }
+</script>
