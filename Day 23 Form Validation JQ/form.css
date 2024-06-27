@@ -1,0 +1,43 @@
+body{
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(rgba(255,173,58),rgba(255,113,18));
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form{
+    height: auto;
+    width: 35%;
+    margin-left: 32.5%;
+    margin-top: 2.5%;
+    border-radius: 30px;
+    background-color: white;
+}
+
+#h1{
+    text-align: center;
+    padding-top: 30px;
+}
+
+#p{
+    text-align: center;
+    color: #868080;
+}
+
+.detail{
+    width: 80%;
+    margin-left: 10%;
+    /* border: 1px solid black; */
+}
+
+.label{
+    font-size: 15px;
+    color: #868080;
+}
+
+.input{
+    height: 35px;
+    border-radius: 5px;
+    width: 100%;
+
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="form.css">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="form">
+        <form action="" id="regestration_form">
+
+            <h1 id="h1">Registration Form</h1>
+            <p id="p">Fill out the form carefully for registration</p>
+
+            <div class="detail">
+                <br>
+                <label for="" style="font-weight: bold;">Student Name</label>
+                <br><br>
+                <input class="input" id="name1" type="text"><br>
+                <label class="label" for="">First Name</label>
+
+                <br><br>
+                <input class="input" id="name2" type="text"><br>
+                <label class="label" for="">Last Name</label>
+                <br><br>
+
+                <label style="font-weight: bold;" for="">Gender</label>
+                <br>
+                <select name="" class="input" style="height: 35px; margin-top: 10px;">
+
+                    <option value="">Please Select</option>
+                    <option value="">Male</option>
+                    <option value="">Female</option>
+                </select>
+
+                <br><br>
+                <label class="label" style="font-weight: bold; color: black;" for="">Student E-mail</label>
+                <input class="input" style="margin-top: 10px;" id="mail" placeholder="Ex: myname@example.com" type="email"><br>
+                <label class="label" for="">example@example.com</label>
+                <br><br>
+
+                <label style="font-weight: bold; color: black;" for="">Pasword</label><br>
+                <input class="input" id="pass" type="text">
+                <br><br>
+
+                <label style="font-weight: bold;" for="">List Of Classes</label>
+                <br>
+                <select name="" class="input" style="height: 35px; margin-top: 10px;">
+                    <option value="">Please Select</option>
+                    <option value="">Std 11</option>
+                    <option value="">Std 12</option>
+                </select>
+                <br><br>
+                <center>
+                    <button
+                        style="height: 45px; width: 150px; background-color: #18bd5b; border: 0px; border-radius: 5px; color: white;">Submit</button>
+                </center>
+                <br>
+            </div>
+            <center>
+
+                <span id="err"></span>
+            </center>
+        </form>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    $(document).ready(function () {
+        $("#regestration_form").submit(function(event) {
+            event.preventDefault()
+            $("#err").text("Registration successfully...")
+            let name = $("#name1").val()
+            let name1 = $("#name2").val()
+            let password = $("#pass").val()
+            let regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
+            let email = $("#mail").val()
+
+            if (name === "") {
+                $("#err").text("Please enter name")
+            }
+            
+            if (name1 === "") {
+                $("#err").text("Please enter name")
+            }
+
+            if(password === ""){
+                $("#err").text("Please enter password")
+            }
+            else if(!regex.test(password)){
+                $("#err").text("Enter strong password")
+            }
+
+            if(email === ""){
+                $("#err").text("Enter e-mail")
+            }
+            
+        })
+
+    })
+
+
+</script>
