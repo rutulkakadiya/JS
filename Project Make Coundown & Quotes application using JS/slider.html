@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    img {
+        height: 600px;
+        width: 100%;
+        display: none;
+    }
+
+    .div2 {
+        height: 100px;
+        width: 100px;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+    }
+
+
+</style>
+
+<body>
+
+    <div class="counter">
+        <div class="div1" style="display: flex;">
+            <div class="div2">
+                <h1 id="time1"></h1>
+            </div>
+
+            <div class="div2" style="margin-left: 30px;">
+                <h1 id="time2"></h1>
+            </div>
+
+            <div class="div2" style="margin-left: 30px;">
+                <h1 id="time3"></h1>
+            </div>
+        </div>
+ </div>
+
+        <img src="1.jpg" alt="">
+        <img src="2.jpg" alt="">
+        <img src="3.jpg" alt="">
+        <img src="4.png" alt="">
+        <img src="5.jpg" alt="">
+   
+
+</body>
+
+</html>
+
+<script>
+
+    let hour = 11
+    let stop = setInterval(() => {
+        hour++
+
+        document.getElementById("time1").innerHTML = hour
+
+        if(hour === 12 ){
+            clearInterval(stop)
+        
+
+        let image = document.querySelectorAll("img")
+
+        let index = 0
+
+        function slider(index) {
+
+            for (let i = 0; i < image.length; i++) {
+                image[i].style.display = "none"
+            }
+
+            image[index].style.display = "block"
+        }
+
+        function show() {
+            setInterval(() => {
+                slider(index)
+                index++
+
+                if (index === image.length) {
+                    index = 0
+                }
+            }, 1000)
+        }
+        show()
+    }
+    },10000)
+
+    document.getElementById("time1").innerHTML = hour
+
+
+    let min = 59;
+    let stop1 = setInterval(() => {
+
+        min++
+
+        document.getElementById("time2").innerHTML = min
+        if (min === 60) {
+            clearInterval(stop1)
+            document.getElementById("time2").innerHTML = "00"
+        }
+
+    }, 10000)
+
+    document.getElementById("time2").innerHTML = min
+
+    let sec = 50;
+    let stop2 = setInterval(() => {
+
+        sec++
+
+        document.getElementById("time3").innerHTML = sec
+        if (sec === 60) {
+            clearInterval(stop2)
+
+            document.getElementById("time3").innerHTML = "00"
+        }
+
+    }, 1000)
+
+    document.getElementById("time3").innerHTML = sec
+
+</script>
