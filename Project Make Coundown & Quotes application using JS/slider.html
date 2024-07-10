@@ -12,6 +12,7 @@
         padding: 0px;
         box-sizing: border-box;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: black;
     }
 
     img {
@@ -22,28 +23,34 @@
     }
 
     @keyframes animate1 {
-        50%{
+        50% {
             transform: scale(0.8);
         }
+    }
+
+    .div1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20%;
     }
 
     .div2 {
         height: 100px;
         width: 100px;
-        border: 1px solid black;
+        border: 1px solid white;
+        color: white;
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: 30px;
     }
-
-
 </style>
 
 <body>
 
     <div class="counter">
-        <div class="div1" style="display: flex;">
+        <div class="div1" id="div">
             <div class="div2">
                 <h1 id="time1"></h1>
             </div>
@@ -56,14 +63,16 @@
                 <h1 id="time3"></h1>
             </div>
         </div>
- </div>
-<br><br><br>
-        <img src="1.jpg" alt="">
-        <img src="2.jpg" alt="">
-        <img src="3.jpg" alt="">
-        <img src="4.png" alt="">
-        <img src="5.jpg" alt="">
-   
+    </div>
+    <br><br><br>
+    <h1 id="text" style="display: none; color: white; text-align: center;">Sale is live!!!</h1>
+    <br><br><br>
+    <img src="1.jpg" alt="">
+    <img src="2.jpg" alt="">
+    <img src="3.jpg" alt="">
+    <img src="4.png" alt="">
+    <img src="5.jpg" alt="">
+
 
 </body>
 
@@ -77,36 +86,37 @@
 
         document.getElementById("time1").innerHTML = hour
 
-        if(hour === 12 ){
+        if (hour === 12) {
             clearInterval(stop)
-        
+            document.getElementById("text").style.display = "block"
+            document.getElementById("div").style.display = "none"
 
-        let image = document.querySelectorAll("img")
+            let image = document.querySelectorAll("img")
 
-        let index = 0
+            let index = 0
 
-        function slider(index) {
+            function slider(index) {
 
-            for (let i = 0; i < image.length; i++) {
-                image[i].style.display = "none"
+                for (let i = 0; i < image.length; i++) {
+                    image[i].style.display = "none"
+                }
+
+                image[index].style.display = "block"
             }
 
-            image[index].style.display = "block"
-        }
+            function show() {
+                setInterval(() => {
+                    slider(index)
+                    index++
 
-        function show() {
-            setInterval(() => {
-                slider(index)
-                index++
-
-                if (index === image.length) {
-                    index = 0
-                }
-            }, 1000)
+                    if (index === image.length) {
+                        index = 0
+                    }
+                }, 1000)
+            }
+            show()
         }
-        show()
-    }
-    },10000)
+    }, 10000)
 
     document.getElementById("time1").innerHTML = hour
 
