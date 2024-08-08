@@ -1,18 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="index.css">
     <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
+
 <body>
-    
+
+    <div class="main_div flex justify-center items-center">
+
+        <div class="taskMainDiv bg-white h-[500px] w-[30%]">
+            <center>
+                <h1 class="text-3xl mt-3">Task Manager</h1>
+
+            </center>
+            <br>
+            <p id="text1" class="ms-3">Enter your work or task:</p>
+            <input type="text" id="inputBox1" class="h-[35px] border-2 border-black w-[95%] ms-3 rounded-[5px]">
+<br><br>
+            <p id="text1" class="ms-3">Task Priority</p>
+            <select name="" id="priority" class="border-2 border-black ms-3 w-[95%]">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+<br><br>
+            <button id="btn1" class="h-[40px] w-[95%] ms-[2.5%] bg-green-700 text-white rounded-[5px]">Add Data</button>
+
+            <div id="addedTask">
+
+            </div>
+        </div>
+
+    </div>
+
 </body>
+
 </html>
 
-<script>
-
-
-
-</script>
+<script src="script.js"></script>
