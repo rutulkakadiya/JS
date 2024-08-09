@@ -47,6 +47,7 @@ function displayData(json) {
         btn3.innerHTML = "Delete";
         btn3.setAttribute("class", "button3");
 
+
         let btn4 = document.createElement("button");
         btn4.innerHTML = "Add To Cart";
         btn4.setAttribute("class", "button4");

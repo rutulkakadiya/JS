@@ -17,16 +17,22 @@ let input2 = document.createElement("input")
 input2.className = "input1"
 
 let text3 = document.createElement("p")
-text3.innerHTML = "<br> Enter Task Priority: High,Medium or Low"
+text3.innerHTML = "<br> Enter Task Priority: High , Medium or Low"
 
 let input3 = document.createElement("input")
 input3.className = "input1"
+
+
+let a = document.createElement("a")
+a.href = '#storeData';
 
 let addButton = document.createElement("button")
 addButton.innerHTML = "Add Data"
 addButton.className = "addButton"
 
-taskDiv.append(text1, input1, text2, input2, text3, input3, addButton)
+a.append(addButton)
+
+taskDiv.append(text1, input1, text2, input2, text3, input3, a)
 mainTaskDiv.append(taskDiv)
 
 addButton.addEventListener("click", function () {
@@ -50,11 +56,11 @@ addButton.addEventListener("click", function () {
     let edit_input1 = document.createElement("input")
     edit_input1.className = "edit_input1"
     edit_input1.style.border = "1px solid black"
-    
+
     let edit_input2 = document.createElement("input")
     edit_input2.className = "edit_input1"
     edit_input2.style.border = "1px solid black"
-    
+
     let edit_input3 = document.createElement("input")
     edit_input3.className = "edit_input1"
     edit_input3.style.border = "1px solid black"
@@ -62,20 +68,20 @@ addButton.addEventListener("click", function () {
     const editButton = document.createElement("button")
     editButton.innerText = "Edit"
     editButton.className = "editButton"
-    
+
     const updateButton = document.createElement("button")
     updateButton.innerText = "Update"
     updateButton.className = "updateButton"
     updateButton.disabled = true;
-    
+
     const deleteButton = document.createElement("button")
     deleteButton.innerText = "Delete"
     deleteButton.className = "deleteButton"
 
-    storeDiv.append(text4 , image1 , text5 , edit_input1 , edit_input2 , edit_input3 , editButton , updateButton , deleteButton)
+    storeDiv.append(text4, image1, text5, edit_input1, edit_input2, edit_input3, editButton, updateButton, deleteButton)
     storeData.append(storeDiv)
 
-    editButton.addEventListener("click" , function(){
+    editButton.addEventListener("click", function () {
         edit_input1.value = input1.value
         edit_input2.value = image1.src
         edit_input3.value = input3.value
@@ -86,7 +92,7 @@ addButton.addEventListener("click", function () {
         edit_input3.style.display = "block"
     })
 
-    updateButton.addEventListener("click" , function(){
+    updateButton.addEventListener("click", function () {
         if (!updateButton.disabled) {
             text4.innerHTML = "Task : " + edit_input1.value
             image1.src = edit_input2.value
@@ -94,7 +100,7 @@ addButton.addEventListener("click", function () {
         }
     })
 
-    deleteButton.addEventListener("click" , function(){
+    deleteButton.addEventListener("click", function () {
         storeDiv.remove()
     })
 
