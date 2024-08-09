@@ -1,134 +1,138 @@
+let count = document.getElementById("count");
+let myCartData = JSON.parse(localStorage.getItem("myCartData")) || [];
 
 fetch("https://fakestoreapi.com/products")
-
-    .then((res) => {
-        return res.json()
-    }).then((json) => {
-        console.log(json)
-        displayData(json)
-    })
+    .then((res) => res.json())
+    .then((json) => {
+        console.log(json);
+        displayData(json);
+        loadCart();  
+    });
 
 function displayData(json) {
+    json.map((el) => {
+        let div = document.createElement("div");
+        div.setAttribute("class", "div1");
 
-    json.map((el, index) => {
-
-        let div = document.createElement("div")
-        div.setAttribute("class", "div1")
-
-        let text = document.createElement("h3")
+        let text = document.createElement("h3");
         text.innerHTML = el.category;
-        text.setAttribute("class", "text1")
+        text.setAttribute("class", "text1");
 
-        let img = document.createElement("img")
-        img.setAttribute("src", el.image)
-        img.setAttribute("class", "img")
+        let img = document.createElement("img");
+        img.setAttribute("src", el.image);
+        img.setAttribute("class", "img");
 
+        let price = document.createElement("p");
+        price.innerHTML = "Price : ₹" + el.price;
+        price.className = "price";
 
-        let price = document.createElement("p")
-        price.innerHTML = "Price : ₹" + el.price
-        price.className = "price"
+        let input = document.createElement("input");
+        input.className = "input";
+        input.setAttribute("placeholder", "Enter Price to update");
 
-        let input = document.createElement("input")
-        input.className = "input"
-        input.setAttribute("placeholder", "Enter Price to update")
+        let input1 = document.createElement("input");
+        input1.className = "input1";
+        input1.setAttribute("placeholder", "Enter category to change");
 
-        let input1 = document.createElement("input")
-        input1.className = "input1"
-        input1.setAttribute("placeholder", "Enter category to change")
+        let btn1 = document.createElement("button");
+        btn1.innerHTML = "Edit";
+        btn1.setAttribute("class", "button1");
 
-        let btn1 = document.createElement("button")
-        btn1.innerHTML = "Edit"
-        btn1.setAttribute("class", "button1")
-
-
-        let btn2 = document.createElement("button")
-        btn2.innerHTML = "Update"
-        btn2.setAttribute("class", "button2")
+        let btn2 = document.createElement("button");
+        btn2.innerHTML = "Update";
+        btn2.setAttribute("class", "button2");
         btn2.disabled = true;
 
-        let btn3 = document.createElement("button")
-        btn3.innerHTML = "Delete"
-        btn3.setAttribute("class", "button3")
+        let btn3 = document.createElement("button");
+        btn3.innerHTML = "Delete";
+        btn3.setAttribute("class", "button3");
 
+        let btn4 = document.createElement("button");
+        btn4.innerHTML = "Add To Cart";
+        btn4.setAttribute("class", "button4");
 
-        let btn4 = document.createElement("button")
-        btn4.innerHTML = "Add To Cart"
-        btn4.setAttribute("class", "button4")
-
-
-        div.append(img, text, price, input, input1, btn1, btn2, btn3, btn4)
-        document.getElementById("main").append(div)
-
-
+        div.append(img, text, price, input, input1, btn1, btn2, btn3, btn4);
+        document.getElementById("main").append(div);
 
         btn1.addEventListener("click", function () {
             input.value = el.price;
             input1.value = el.category;
 
-            localStorage.setItem("Edit_value", JSON.stringify(el.price))
-            localStorage.setItem("Category", JSON.stringify(el.category))
+            localStorage.setItem("Edit_value", JSON.stringify(el.price));
+            localStorage.setItem("Category", JSON.stringify(el.category));
 
-            input.style.display = "block"
-            input1.style.display = "block"
+            input.style.display = "block";
+            input1.style.display = "block";
             btn2.disabled = false;
-        })
+        });
 
         btn2.addEventListener("click", function () {
-
             if (!btn2.disabled) {
-                let newPrice = input.value
-                let newCategory = input1.value
+                let newPrice = input.value;
+                let newCategory = input1.value;
 
-                price.innerHTML = "Price : ₹" + newPrice
-                text.innerHTML = newCategory
+                price.innerHTML = "Price : ₹" + newPrice;
+                text.innerHTML = newCategory;
+
+                localStorage.setItem("Updated_value", JSON.stringify(newPrice));
+                localStorage.setItem("Category", JSON.stringify(newCategory));
             }
-
-            localStorage.setItem("Updated_value", JSON.stringify(newPrice))
-            localStorage.setItem("Category", JSON.stringify(newCategory))
-
-        })
+        });
 
         btn3.addEventListener("click", function () {
+            div.remove();
 
-            div.remove()
-
-            localStorage.removeItem("Edit_value")
+            localStorage.removeItem("Edit_value");
             localStorage.removeItem("Updated_value");
             localStorage.removeItem("Category");
-
-        })
+        });
 
         btn4.addEventListener("click", function () {
-            console.log(el.image);
-            console.log(el.price);
-            let cart_div = document.getElementById("mainCartDiv");
+            
+            myCartData.push({ image: el.image, price: el.price });
 
-            let cart_div1 = document.createElement("div");
-            cart_div1.className = "Addtocart"
+            localStorage.setItem("myCartData", JSON.stringify(myCartData));
 
-            let cart_img = document.createElement("img");
-            cart_img.setAttribute("src", el.image);
-            cart_img.setAttribute("class", "cartImg");
+            updateCart();  
+        });
+    });
+}
 
-            let cart_price = document.createElement("p");
-            cart_price.innerHTML = "Price : ₹" + el.price;
-            cart_price.setAttribute("class", "cartPrice");
+function loadCart() {
+    if (myCartData.length > 0) {
+        updateCart();  
+    }
+}
 
-            let icon = document.createElement("i")
-            icon.setAttribute("class", "fa-solid fa-trash")
-            icon.style.marginRight = "15px"
+function updateCart() {
+    let cart_div = document.getElementById("mainCartDiv");
+    cart_div.innerHTML = "";  
 
-            icon.addEventListener("click", function () {
-                cart_div1.remove()
-            })
+    myCartData.forEach((item, index) => {
+        let cart_div1 = document.createElement("div");
+        cart_div1.className = "Addtocart";
 
-            cart_div1.append(cart_img, cart_price, icon);
-            cart_div.append(cart_div1);
-        })
+        let cart_img = document.createElement("img");
+        cart_img.setAttribute("src", item.image);
+        cart_img.setAttribute("class", "cartImg");
 
+        let cart_price = document.createElement("p");
+        cart_price.innerHTML = "Price : ₹" + item.price;
+        cart_price.setAttribute("class", "cartPrice");
 
+        let icon = document.createElement("i");
+        icon.setAttribute("class", "fa-solid fa-trash");
+        icon.style.marginRight = "15px";
 
+        icon.addEventListener("click", function () {
+            myCartData.splice(index, 1);  
+            localStorage.setItem("myCartData", JSON.stringify(myCartData));  
+            updateCart();  
+        });
 
-    })
+        cart_div1.append(cart_img, cart_price, icon);
+        cart_div.append(cart_div1);
+    });
 
+    count.innerHTML = myCartData.length;
 }
