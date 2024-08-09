@@ -30,11 +30,12 @@ document.getElementById("searchBtn").addEventListener("click", function () {
                     const button = document.createElement("button")
                     button.innerText = "Edit"
                     button.className = "btn1"
-
+                    
 
                     const button1 = document.createElement("button")
                     button1.innerText = "Update"
                     button1.className = "btn2"
+                    button1.disabled = true;
                     
                     const button2 = document.createElement("button")
                     button2.innerText = "Delete"
@@ -44,11 +45,12 @@ document.getElementById("searchBtn").addEventListener("click", function () {
                     mainDiv1.append(recipeDiv);
 
 
-                    button.addEventListener("click", function(index) {
+                    button.addEventListener("click", function() {
 
                         input1.value = meal.strMeal;                        
 
                         input1.style.display = "block"
+                        button1.disabled = false;
 
                         localStorage.setItem("edit_value",meal.strMeal)                        
 
@@ -56,9 +58,11 @@ document.getElementById("searchBtn").addEventListener("click", function () {
 
                     button1.addEventListener("click", function() {
 
-                        const new_value = input1.value;
+                        if(!button1.disabled){
+                            const new_value = input1.value;
                         document.getElementById(`text-${meal.idMeal}`).innerText = new_value;
-                                                           
+                        }                                                                                                           
+                        
                         localStorage.setItem("updated_value",new_value)
                     })
 

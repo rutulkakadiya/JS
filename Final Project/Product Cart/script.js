@@ -44,6 +44,7 @@ function displayData(json) {
         let btn2 = document.createElement("button")
         btn2.innerHTML = "Update"
         btn2.setAttribute("class", "button2")
+        btn2.disabled = true;
 
         let btn3 = document.createElement("button")
         btn3.innerHTML = "Delete"
@@ -69,14 +70,18 @@ function displayData(json) {
 
             input.style.display = "block"
             input1.style.display = "block"
+            btn2.disabled = false;
         })
 
         btn2.addEventListener("click", function () {
-            let newPrice = input.value
-            let newCategory = input1.value
 
-            price.innerHTML = "Price : ₹" + newPrice
-            text.innerHTML = newCategory
+            if (!btn2.disabled) {
+                let newPrice = input.value
+                let newCategory = input1.value
+
+                price.innerHTML = "Price : ₹" + newPrice
+                text.innerHTML = newCategory
+            }
 
             localStorage.setItem("Updated_value", JSON.stringify(newPrice))
             localStorage.setItem("Category", JSON.stringify(newCategory))
@@ -113,7 +118,7 @@ function displayData(json) {
             icon.setAttribute("class", "fa-solid fa-trash")
             icon.style.marginRight = "15px"
 
-            icon.addEventListener("click" , function(){
+            icon.addEventListener("click", function () {
                 cart_div1.remove()
             })
 
