@@ -107,7 +107,7 @@ function loadCart() {
 function updateCart() {
     let cart_div = document.getElementById("mainCartDiv");
     cart_div.innerHTML = "";  
-
+    let total = 0;
     myCartData.forEach((item, index) => {
         let cart_div1 = document.createElement("div");
         cart_div1.className = "Addtocart";
@@ -119,6 +119,7 @@ function updateCart() {
         let cart_price = document.createElement("p");
         cart_price.innerHTML = "Price : ₹" + item.price;
         cart_price.setAttribute("class", "cartPrice");
+        total += item.price;  
 
         let icon = document.createElement("i");
         icon.setAttribute("class", "fa-solid fa-trash");
@@ -135,4 +136,7 @@ function updateCart() {
     });
 
     count.innerHTML = myCartData.length;
+
+    document.getElementById("grandTotal").innerHTML = total.toFixed(2);  
+
 }
