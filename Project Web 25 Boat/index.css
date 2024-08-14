@@ -1,0 +1,90 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.accordian {
+  width: 95%;
+  margin-left: 2.5%;
+  /* box-shadow: 0 1px 5px rgba(0, 0, 0, .10); */
+  /* margin: 5% auto; */
+  color: darken(black, 25%);
+}
+
+
+.accordian ul ul li a {
+  display: block;
+  background-color: #eee;
+  padding: 1rem;
+  color: #777;
+  border-bottom: 1px solid rgba(0, 0, 0, .05);
+
+  &:hover {
+    background-color: #55acee;
+    color: #fff;
+  }
+}
+
+.accordian ul ul {
+  display: none;
+}
+
+.open {
+  transform: rotate(45deg);
+  transition: all .25s ease;
+}
+
+.accordian ul ul li:last-child a {
+  border-bottom: 0;
+}
+
+.fa {
+  transition: all .25s ease;
+  float: right;
+}
+
+.accordian h3 {
+  cursor: pointer;
+}
+
+.main4{
+  height: 180px;
+  border-radius: 15px;
+  background-image: url(Asset/Image/Strip_Mob-2_600x.png);
+  background-size: cover;
+  background-position: center;
+}
+
+#round1{
+  border-radius: 15px 15px 0px 0px;
+}
+
+#round2{
+  border-radius: 0px 0px 15px 15px;
+}
+
+
