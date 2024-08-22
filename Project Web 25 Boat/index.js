@@ -14,13 +14,13 @@ var swiper = new Swiper(".mySwiper1", {
     autoplayspeed: 1000,
     speed: 1000,
     loop: true,
-    slidesPerView: 3,
+    slidesPerView: 4.5,
     spaceBetween: 30,
-})    
+})
 
 jQuery(document).ready(function () {
     var mySwiper = new Swiper('.mySwiper1', {
-        slidesPerView: 3,
+        slidesPerView: 1,
         spaceBetween: 10,
         breakpoints: {
             '480': {
@@ -40,7 +40,7 @@ jQuery(document).ready(function () {
                 spaceBetween: 40,
             },
         },
-        
+
         freeMode: true,
         loop: false,
         scrollbar: {
@@ -261,3 +261,132 @@ hoverVideos.forEach(video => {
         video.pause();
     });
 });
+
+
+
+// top picks for you
+
+document.querySelectorAll('.toggleDiv').forEach(item => {
+    item.addEventListener('click', function () {
+        // Hide all content divs
+        document.querySelectorAll('.contentDiv').forEach(div => {
+            div.style.display = 'none';
+        });
+
+        // Show the targeted content div
+        let targetDiv = document.getElementById(this.getAttribute('data-target'));
+        if (targetDiv) {
+            targetDiv.style.display = 'block';
+        }
+    });
+});
+
+const toggleDivs = document.querySelectorAll('.toggleDiv');
+
+toggleDivs.forEach(function (toggleDiv) {
+    toggleDiv.addEventListener('click', function () {
+        toggleDivs.forEach(function (div) {
+            div.classList.remove('active');
+        });
+        this.classList.add('active');
+    });
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+    loadCartItems();
+    updateTotalAmount();
+
+    document.querySelectorAll(".addToCartButton").forEach(button => {
+        button.addEventListener("click", function () {
+            const productDiv = button.closest('.products1');
+            const productImage = productDiv.querySelector('img').src;
+            const productName = productDiv.querySelector('p.font-bold').innerText;
+            const productPrice = parseFloat(productDiv.querySelector('.price').innerText.replace('₹', '').replace(',', ''));
+
+            addToCart(productImage, productName, productPrice);
+            saveCartItem(productImage, productName, productPrice);
+            updateTotalAmount();
+        });
+    });
+});
+
+function addToCart(image, name, price) {
+    const itemDiv = document.getElementById("addToCart");    
+
+    const cartItemDiv = document.createElement("div");
+    cartItemDiv.style.marginBottom = "10px";
+    cartItemDiv.className = "cardItemDiv";
+
+    const cardImageDiv = document.createElement("div");
+    cardImageDiv.className = "cardimageDiv";
+
+    const productImage = document.createElement("img");
+    productImage.src = image;
+    productImage.className = "productImage";
+    cardImageDiv.append(productImage);
+
+    const productName = document.createElement("p");
+    productName.className = "productName";
+    productName.innerText = name;
+
+    const productPrice = document.createElement("p");
+    productPrice.className = "productPrice";
+    productPrice.innerText = `₹${price.toLocaleString()}`;
+
+    const cardTextDiv = document.createElement("div");
+    cardTextDiv.className = "cardtextDiv";
+    cardTextDiv.append(productName, productPrice);
+
+    const productRemoveDiv = document.createElement("div");
+    productRemoveDiv.className = "productRemoveDiv";
+    const removeButton = document.createElement("i");
+    removeButton.classList = "fa-regular fa-trash-can";
+    productRemoveDiv.append(removeButton);
+
+    cartItemDiv.append(cardImageDiv, cardTextDiv, productRemoveDiv);
+    itemDiv.append(cartItemDiv);
+
+    removeButton.addEventListener("click", function () {
+        cartItemDiv.remove();
+        removeCartItemFromStorage(name, price);
+        updateTotalAmount();
+    });
+}
+
+function removeCartItemFromStorage(name, price) {
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const index = cartItems.findIndex(item => item.name === name && item.price === price);
+    if (index !== -1) cartItems.splice(index, 1); // Remove only the specific item
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+}
+
+function saveCartItem(image, name, price) {
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cartItems.push({ image, name, price });
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+}
+
+function loadCartItems() {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cartItems.forEach(item => {
+        addToCart(item.image, item.name, item.price);
+    });
+}
+
+function updateTotalAmount() {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    let totalAmount = 0;
+    cartItems.forEach(item => {
+        totalAmount += item.price;
+    });
+    document.getElementById("totalAmount").innerText = `Total: ₹${totalAmount.toLocaleString()}`;
+}
+
+
+// order place
+
+document.getElementById("confirom_button").addEventListener("click" , function(){
+    
+    const confirom_div = document.createElement("div")
+
+})

@@ -30,8 +30,6 @@
 .accordian {
   width: 95%;
   margin-left: 2.5%;
-  /* box-shadow: 0 1px 5px rgba(0, 0, 0, .10); */
-  /* margin: 5% auto; */
   color: darken(black, 25%);
 }
 
@@ -87,4 +85,51 @@
   border-radius: 0px 0px 15px 15px;
 }
 
+.toggleDiv{
+  transition: border 0.5s;
+}
 
+.toggleDiv.active {
+  color: black;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 30px;
+  background: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1));
+}
+
+.cardItemDiv{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid black; */
+}
+
+.cardtextDiv{
+  /* border: 1px solid black; */
+  width: 65%;
+}
+
+.productName{
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.productPrice{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.productRemoveDiv{
+  /* border: 1px solid black; */
+  width: 5%;
+}
+
+.cardimageDiv{
+  height: 100px;
+  width: 25%;
+}
+
+.productImage{
+  height: 100%;
+  width: 100%;
+}
